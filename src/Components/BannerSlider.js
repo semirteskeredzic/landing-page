@@ -1,4 +1,4 @@
-import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/react/solid";
+import { ArrowCircleLeftIcon, ArrowCircleRightIcon, DotsCircleHorizontalIcon, DotsHorizontalIcon, DotsVerticalIcon } from "@heroicons/react/solid";
 import React, { useState } from "react";
 import { SliderImages } from "./SliderImages";
 
@@ -18,23 +18,34 @@ const BannerSlider = () => {
 
     return (
         <section className="relative h-full flex justify-center items">
-            <ArrowCircleLeftIcon onClick={() => prevSlide()} className="absolute left-0 top-1/2 w-16 cursor-pointer" />
+            <ArrowCircleLeftIcon onClick={() => prevSlide()} className="absolute left-0 top-1/2 w-12 md:w-16 cursor-pointer text-gray-700 opacity-50 hover:opacity-100" />
            {SliderImages.map((slide, index) => {
-               console.log(slide)
                return (
-                    <div key={index} className={`${index === currentSlide ? 'slide-active' : 'translate-x-6 ease-in-out transition'}`}>
+                    <div key={index}>
                         {index === currentSlide && (
                             <img 
                                 src={slide.image} 
                                 alt="banner" 
                                 key={index}
-                                className="w-screen h-[600px] rounded-lg object-cover transition ease-in-out" 
+                                className="w-screen h-[400px] md:h-[600px] rounded-lg object-cover" 
                             />
                         )}
                     </div>
                )
            })}
-           <ArrowCircleRightIcon onClick={() => nextSlide()} className="absolute right-0 w-16 top-1/2 cursor-pointer" /> 
+           <ArrowCircleRightIcon onClick={() => nextSlide()} className="absolute right-0 w-12 md:w-16 top-1/2 cursor-pointer text-gray-700 opacity-50 hover:opacity-100" />
+           <div className="absolute flex flex-row bottom-0 left-0 w-full h-auto justify-center">
+                {SliderImages.map((slide, index) => {
+                    return (
+                        <div key={index} className="flex items-center justify-center p-2">
+                            {index === currentSlide ?
+                                <div className="w-4 h-4 rounded-full bg-gray-700 mr-2 cursor-pointer" />
+                            :
+                                <div onClick={() => setCurrentSlide(index)} className="w-4 h-4 rounded-full bg-gray-700 mr-2 cursor-pointer opacity-50" />}
+                        </div>
+                    )
+                })}
+            </div> 
         </section>
     )
 }
