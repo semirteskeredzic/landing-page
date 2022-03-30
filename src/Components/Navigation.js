@@ -32,7 +32,7 @@ const Navigation = () => {
     useOnClickOutside(linkRef, () => setIsOpen(false))
 
     return (
-        <div className="sticky top-0 bg-white">
+        <div className="sticky top-0 bg-white z-10">
             <nav className="hidden md:block">
                 <ul className="flex flex-row justify-between md:w-2/3 lg:w-1/2">
                 <li className="text-xl uppercase p-4 hover:bg-blue-500 hover:text-white transition ease-in-out delay-75 cursor-pointer">
