@@ -5,7 +5,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Homepage />
         <Routes>
           <Route path="/" element={<Homepage />} />
         </Routes>

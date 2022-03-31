@@ -1,4 +1,4 @@
-import { ArrowCircleLeftIcon, ArrowCircleRightIcon, DotsCircleHorizontalIcon, DotsHorizontalIcon, DotsVerticalIcon } from "@heroicons/react/solid";
+import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/react/solid";
 import React, { useState } from "react";
 import { SliderImages } from "./SliderImages";
 
