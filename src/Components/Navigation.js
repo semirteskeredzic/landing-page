@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDownIcon, MenuIcon, XIcon } from '@heroicons/react/solid'
 
-const Navigation = () => {
+const Navigation = ({categories}) => {
 
     const [isOpen, setIsOpen] = useState(false)
-    const [openSidebar, setOpenSidebar] = useState(false)
+    const [openSidebar, setOpenSidebar] = useState(false)  
     const sidebarRef = useRef()
     const linkRef = useRef()
 
@@ -43,19 +43,12 @@ const Navigation = () => {
                 <li className="group relative w-auto dropdown text-xl uppercase p-4 hover:bg-blue-500 hover:text-white transition ease-in-out delay-75 cursor-pointer">
                     <span className="inline-block">Categories</span> <ChevronDownIcon className="w-6 inline-block" />
                     <div className="group-hover:block dropdown-menu absolute hidden h-auto mt-4 shadow-xl left-0">
-                        <ul className="top-0 left-0 w-48 bg-white shadow text-black">
-                            <li className="px-6 py-7 hover:bg-blue-500 hover:text-white">
-                                <Link className="block font-bold text-base uppercase" to={`/item`}>Item</Link>
-                            </li>
-                            <li className="px-6 py-8 hover:bg-blue-500 hover:text-white">
-                                <Link className="block font-bold text-base uppercase" to={`/item`}>Item2</Link>
-                            </li>
-                            <li className="px-6 py-8 hover:bg-blue-500 hover:text-white">
-                                <Link className="block font-bold text-base uppercase" to={`/item`}>Item3</Link>
-                            </li>
-                            <li className="px-6 py-8 hover:bg-blue-500 hover:text-white">
-                                <Link className="block font-bold text-base uppercase" to={`/item`}>Item4</Link>
-                            </li>
+                        <ul className="top-0 left-0 w-[65vw] bg-white shadow text-black grid grid-cols-4">
+                            {categories.map(category => (
+                                <li className="px-6 py-7 hover:bg-blue-500 hover:text-white">
+                                    <Link className="block font-bold text-base uppercase" to={`/products/category/${category}`}>{category}</Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </li>
@@ -90,18 +83,11 @@ const Navigation = () => {
                             <span className="inline-block">Categories</span> <ChevronDownIcon className="w-6 inline-block" />
                             <div className={`${openSidebar ? 'block' : 'hidden'} dropdown-menu h-auto mt-4 left-0`}>
                                 <ul className="top-0 left-0 w-full text-black">
-                                    <li className="px-6 py-7 hover:bg-blue-500 hover:text-white">
-                                        <Link className="block font-bold text-base uppercase" to={`/item`}>Item</Link>
-                                    </li>
-                                    <li className="px-6 py-8 hover:bg-blue-500 hover:text-white">
-                                        <Link className="block font-bold text-base uppercase" to={`/item`}>Item2</Link>
-                                    </li>
-                                    <li className="px-6 py-8 hover:bg-blue-500 hover:text-white">
-                                        <Link className="block font-bold text-base uppercase" to={`/item`}>Item3</Link>
-                                    </li>
-                                    <li className="px-6 py-8 hover:bg-blue-500 hover:text-white">
-                                        <Link className="block font-bold text-base uppercase" to={`/item`}>Item4</Link>
-                                    </li>
+                                    {categories.map(category => (
+                                        <li className="px-6 py-7 hover:bg-blue-500 hover:text-white">
+                                            <Link className="block font-bold text-base uppercase" to={`/products/category/${category}`}>{category}</Link>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </li>

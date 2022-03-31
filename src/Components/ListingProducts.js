@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ListingProducts = ({products, selectedcategories }) => {
 
     const [date, setDate] = useState(Date.now())
+    const navigate = useNavigate()
 
     useEffect(() => {
         setDate(Date.now())
@@ -23,7 +25,7 @@ const ListingProducts = ({products, selectedcategories }) => {
                                 <p className="text-lg font-extrabold">{product.price}</p>     
                             </div>
                             <p className="h-[48px] mt-2 text-xs overflow-hidden">{product.description}</p>
-                            <button className="w-full mt-3 botom-0 shadow-sm rounded-md p-2 bg-blue-500 text-white hover:bg-blue-700">Detail</button>
+                            <button onClick={() => navigate(`/product/${product.id}`)} className="w-full mt-3 botom-0 shadow-sm rounded-md p-2 bg-blue-500 text-white hover:bg-blue-700">Detail</button>
                         </div>
                 ))
                 }

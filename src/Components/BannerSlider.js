@@ -1,12 +1,11 @@
 import { ArrowCircleLeftIcon, ArrowCircleRightIcon } from "@heroicons/react/solid";
 import React, { useState } from "react";
-import { SliderImages } from "./SliderImages";
 
 
-const BannerSlider = () => {
+const BannerSlider = ({props}) => {
 
     const [currentSlide, setCurrentSlide] = useState(0)
-    const length = SliderImages.length
+    const length = props.length
 
     const nextSlide = () => {
         setCurrentSlide(currentSlide === length - 1 ? 0 : currentSlide + 1)
@@ -19,7 +18,7 @@ const BannerSlider = () => {
     return (
         <section className="relative h-full flex justify-center items">
             <ArrowCircleLeftIcon onClick={() => prevSlide()} className="absolute left-0 top-1/2 w-12 md:w-16 cursor-pointer text-gray-700 opacity-50 hover:opacity-100" />
-           {SliderImages.map((slide, index) => {
+           {props.map((slide, index) => {
                return (
                     <div key={index}>
                         {index === currentSlide && (
@@ -35,7 +34,7 @@ const BannerSlider = () => {
            })}
            <ArrowCircleRightIcon onClick={() => nextSlide()} className="absolute right-0 w-12 md:w-16 top-1/2 cursor-pointer text-gray-700 opacity-50 hover:opacity-100" />
            <div className="absolute flex flex-row bottom-0 left-0 w-full h-auto justify-center">
-                {SliderImages.map((slide, index) => {
+                {props.map((slide, index) => {
                     return (
                         <div key={index} className="flex items-center justify-center p-2">
                             {index === currentSlide ?
