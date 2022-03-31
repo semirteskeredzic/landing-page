@@ -8,11 +8,11 @@ import Navigation from "./Navigation";
 const Homepage = () => {
     return (
         <div>
-        <Header />
-        <Navigation />
-        <BannerSlider />
-        <Listing />
-        <Footer />
+            <Header />
+            <Navigation />
+            <BannerSlider />
+            <Listing />
+            <Footer />
         </div>
     );
     }
